@@ -22,6 +22,10 @@ return array(
 			'openByDefault' => array(
 				'type' => 'boolean',
 				'default' => false
+			),
+			'accordionMode' => array(
+				'type' => 'boolean',
+				'default' => true
 			)
 		),
 		'supports' => array(
@@ -33,6 +37,6 @@ return array(
 		),
 		'editorScript' => 'file:./index.js',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./accord-faq.js'
+		'script' => 'file:./accord-faq.js'
 	)
 );

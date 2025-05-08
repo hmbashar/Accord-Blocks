@@ -8,7 +8,7 @@
   \****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"accord/faq","title":"FAQ Block","category":"widgets","icon":"editor-help","description":"A simple FAQ block with accordion functionality.","attributes":{"question":{"type":"string","source":"html","selector":".accord-faq-question"},"answer":{"type":"string","source":"html","selector":".accord-faq-answer"},"openByDefault":{"type":"boolean","default":false}},"supports":{"color":{"background":true,"text":true},"typography":true},"editorScript":"file:./index.js","style":"file:./style-index.css","viewScript":"file:./accord-faq.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"accord/faq","title":"FAQ Block","category":"widgets","icon":"editor-help","description":"A simple FAQ block with accordion functionality.","attributes":{"question":{"type":"string","source":"html","selector":".accord-faq-question"},"answer":{"type":"string","source":"html","selector":".accord-faq-answer"},"openByDefault":{"type":"boolean","default":false},"accordionMode":{"type":"boolean","default":true}},"supports":{"color":{"background":true,"text":true},"typography":true},"editorScript":"file:./index.js","style":"file:./style-index.css","script":"file:./accord-faq.js"}');
 
 /***/ }),
 
@@ -41,41 +41,55 @@ function Edit({
   const {
     question,
     answer,
-    openByDefault
+    openByDefault,
+    accordionMode
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-    className: `accord-faq ${openByDefault ? 'is-open' : ''}`
+    className: `accord-faq ${openByDefault ? "is-open" : ""}`
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('FAQ Settings', 'accord-blocks'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Open by default', 'accord-blocks'),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("FAQ Settings", "accord-blocks"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Open by default", "accord-blocks"),
           checked: openByDefault,
           onChange: value => setAttributes({
             openByDefault: value
           })
-        })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Accordion Mode (close others)", "accord-blocks"),
+          checked: accordionMode,
+          onChange: value => setAttributes({
+            accordionMode: value
+          }),
+          help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("If enabled, opening one FAQ will close others in the same group.", "accord-blocks")
+        })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       ...blockProps,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        tagName: "h4",
-        className: "accord-faq-question",
-        value: question,
-        onChange: value => setAttributes({
-          question: value
-        }),
-        placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add your question…', 'accord-blocks')
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "accord-faq-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          tagName: "h4",
+          className: "accord-faq-question",
+          value: question,
+          onChange: value => setAttributes({
+            question: value
+          }),
+          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add your question…", "accord-blocks")
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "accord-faq-icon",
+          children: "\u25BC"
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        tagName: "div",
+        tagName: "p",
         className: "accord-faq-answer",
         value: answer,
         onChange: value => setAttributes({
           answer: value
         }),
-        placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add your answer…', 'accord-blocks')
+        placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add your answer…", "accord-blocks")
       })]
     })]
   });
@@ -146,18 +160,26 @@ function save({
   const {
     question,
     answer,
-    openByDefault
+    openByDefault,
+    accordionMode
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
-      className: `accord-faq ${openByDefault ? 'is-open' : ''}`
+      className: `accord-faq ${openByDefault ? "is-open" : ""}`,
+      "data-accordion": accordionMode ? "true" : "false"
     }),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      tagName: "h4",
-      className: "accord-faq-question",
-      value: question
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "accord-faq-header",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+        tagName: "h4",
+        className: "accord-faq-question",
+        value: question
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "accord-faq-icon",
+        children: "\u25BC"
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      tagName: "div",
+      tagName: "p",
       className: "accord-faq-answer",
       value: answer
     })]

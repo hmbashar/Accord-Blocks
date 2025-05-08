@@ -4,19 +4,37 @@
   \*******************************/
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.accord-faq').forEach(faqBlock => {
-    const question = faqBlock.querySelector('.accord-faq-question');
-    if (question) {
-      question.addEventListener('click', () => {
-        // If accordion style: close other FAQs in the same container
-        const parent = faqBlock.parentElement;
-        parent.querySelectorAll('.accord-faq').forEach(item => {
-          if (item !== faqBlock) {
-            item.classList.remove('is-open');
-          }
-        });
+    const header = faqBlock.querySelector('.accord-faq-header');
+    const answer = faqBlock.querySelector('.accord-faq-answer');
+    if (!answer) return;
 
-        // Toggle current FAQ
+    // 🔥 NEW: Set initial height if open by default
+    if (faqBlock.classList.contains('is-open')) {
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+    if (header) {
+      header.addEventListener('click', () => {
+        const isAccordion = faqBlock.dataset.accordion === 'true';
+        if (isAccordion) {
+          const parent = faqBlock.parentElement;
+          parent.querySelectorAll('.accord-faq').forEach(item => {
+            if (item !== faqBlock) {
+              item.classList.remove('is-open');
+              const otherAnswer = item.querySelector('.accord-faq-answer');
+              if (otherAnswer) {
+                otherAnswer.style.maxHeight = null;
+              }
+            }
+          });
+        }
         faqBlock.classList.toggle('is-open');
+        if (faqBlock.classList.contains('is-open')) {
+          // Set dynamic height based on scrollHeight
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          // Collapse smoothly
+          answer.style.maxHeight = null;
+        }
       });
     }
   });

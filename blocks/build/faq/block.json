@@ -19,6 +19,10 @@
     "openByDefault": {
       "type": "boolean",
       "default": false
+    },
+    "accordionMode": {
+      "type": "boolean",
+      "default": true
     }
   },
   "supports": {
@@ -30,5 +34,5 @@
   },
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css",
-  "viewScript": "file:./accord-faq.js"
+  "script": "file:./accord-faq.js"
 }
