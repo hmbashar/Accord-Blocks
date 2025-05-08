@@ -1,0 +1,34 @@
+{
+    "apiVersion": 3,
+    "name": "accord/faq",
+    "title": "FAQ Block",
+    "category": "widgets",
+    "icon": "editor-help",
+    "description": "A simple FAQ block with accordion functionality.",
+    "attributes": {
+        "question": {
+            "type": "string",
+            "source": "html",
+            "selector": ".accord-faq-question"
+        },
+        "answer": {
+            "type": "string",
+            "source": "html",
+            "selector": ".accord-faq-answer"
+        },
+        "openByDefault": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "typography": true
+    },
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./accord-faq.js"
+}

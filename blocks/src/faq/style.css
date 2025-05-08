@@ -1,0 +1,24 @@
+.accord-faq {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accord-faq-question {
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    background: #f9f9f9;
+    user-select: none;
+}
+
+.accord-faq-answer {
+    padding: 15px;
+    display: none;
+}
+
+.accord-faq.is-open .accord-faq-answer {
+    display: block;
+}
