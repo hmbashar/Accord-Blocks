@@ -1,0 +1,15 @@
+.accord-faq-group {
+    margin-bottom: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.accord-faq-group .accord-faq {
+    margin-bottom: 10px;
+}
+.accord-faq-group-title {
+    margin: 0 0 15px;
+}

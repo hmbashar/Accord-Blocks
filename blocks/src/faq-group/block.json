@@ -1,0 +1,66 @@
+{
+	"apiVersion": 3,
+	"name": "accord/faq-group",
+	"title": "FAQ Group",
+	"category": "design",
+	"icon": "list-view",
+	"description": "Group multiple FAQ blocks together.",
+	"attributes": {
+		"accordionMode": {
+			"type": "boolean",
+			"default": true
+		},
+		"groupTitle": {
+			"type": "string",
+			"source": "html",
+			"selector": ".accord-faq-group-title"
+		},
+		"groupTitleColor": {
+			"type": "string",
+			"default": ""
+		},
+		"groupTitleFontSize": {
+			"type": "string",
+			"default": ""
+		},
+		"groupTitleFontFamily": {
+			"type": "string",
+			"default": ""
+		},
+		"groupGap": {
+			"type": "string",
+			"default": "15px"
+		},
+		"groupBorder": {
+			"type": "object",
+			"default": {
+				"width": "",
+				"radius": "",
+				"color": "",
+				"style": ""
+			}
+		}
+	},
+	"supports": {
+		"anchor": false,
+		"multiple": true,
+		"color": {
+			"background": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"border": {
+			"radius": true,
+			"width": true,
+			"color": true,
+			"style": true
+		},
+		"layout": {
+			"type": "default"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}
