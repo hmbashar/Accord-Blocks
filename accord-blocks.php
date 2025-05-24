@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Accord Blocks – The Easiest Accordion & FAQ Blocks for WordPress
+ * Plugin Name: Accord Blocks – The Easiest Accordion & FAQ Blocks
  * Description: Create beautiful, responsive, and SEO-friendly accordions and FAQs with Gutenberg blocks. Features include customizable designs, rich text support, schema markup for FAQs, and smooth animations. Perfect for creating engaging content sections, product FAQs, and knowledge bases.
  * Version: 1.0.0
  * Requires at least: 6.0
- * Requires PHP: 7.4
+ * Requires PHP: 8.0
  * Author: Md Abul Bashar
- * Author URI: https://hmbashar.com
+ * Author URI: http://facebook.com/hmbashar
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: accord-blocks
@@ -14,7 +14,7 @@
  *
  * @package AccordBlocks
  * @author Md Abul Bashar
- * @link https://hmbashar.com
+ * @link http://facebook.com/hmbashar
  * @since 1.0.0
  */
 namespace AccordBlocks;
@@ -81,7 +81,7 @@ final class Accord_Blocks
         } else {
             add_action('admin_notices', function () {
                 echo '<div class="notice notice-error"><p>';
-                _e('Accord Blocks: Required class could not be loaded.', 'accord-blocks');
+                esc_html_e('Accord Blocks: Required class could not be loaded.', 'accord-blocks');
                 echo '</p></div>';
             });
         }
