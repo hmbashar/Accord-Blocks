@@ -8,6 +8,10 @@
     "url": "http://facebook.com/hmbashar"
   },
   "license": "GPL-2.0-or-later",
+  "private": true,
+  "workspaces": [
+		"blocks"
+	  ],
   "keywords": [
     "wordpress",
     "gutenberg",
@@ -18,8 +22,9 @@
     "toggle"
   ],
   "scripts": {
+    "clean": "find . -name '.DS_Store' -type f -delete",
     "i:b": "npm install --prefix blocks",
-    "build": "wp-scripts build --webpack-copy-php --blocks-manifest",
+    "build": "npm --workspace blocks run build",
     "build:blocks": "cd blocks && npm run build",
     "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style",
