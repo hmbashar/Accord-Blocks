@@ -1,6 +1,5 @@
 === Accord Blocks – The Easiest Accordion & FAQ Blocks ===
 Contributors: hmbashar
-Donate link: https://hmbashar.com
 Tags: accordion, faq, blocks, toggle, collapse
 Requires at least: 6.0
 Tested up to: 6.8
