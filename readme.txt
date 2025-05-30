@@ -68,6 +68,12 @@ Yes, both FAQ and FAQ Group blocks come with extensive customization options for
 Yes, the plugin implements proper schema markup for FAQs and follows SEO best practices.
 
 
+== Screenshots ==
+1. Group FAQs
+2. Normal FAQs
+3. Normal FAQ's Control Panels
+4. Group FAQ's Control Panels
+
 == Changelog ==
 
 = 1.0.0 =
