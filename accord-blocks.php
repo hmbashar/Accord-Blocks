@@ -2,18 +2,18 @@
 /**
  * Plugin Name: Accord Blocks – The Easiest Accordion & FAQ Blocks
  * Description: Create beautiful, responsive, and SEO-friendly accordions and FAQs with Gutenberg blocks. Features include customizable designs, rich text support, schema markup for FAQs, and smooth animations. Perfect for creating engaging content sections, product FAQs, and knowledge bases.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 6.0
  * Requires PHP: 8.0
  * Author: Md Abul Bashar
- * Author URI: http://facebook.com/hmbashar
+ * Author URI: https://hmbashar.com
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: accord-blocks
  *
  * @package AccordBlocks
  * @author Md Abul Bashar
- * @link http://facebook.com/hmbashar
+ * @link https://hmbashar.com
  * @since 1.0.0
  */
 namespace AccordBlocks;
@@ -59,7 +59,7 @@ final class Accord_Blocks
      */
     private function define_constants()
     {
-        define('ACCORD_BLOCKS_VERSION', '1.0.0');
+        define('ACCORD_BLOCKS_VERSION', '1.0.1');
         define('ACCORD_BLOCKS_DIR', plugin_dir_path(__FILE__));
         define('ACCORD_BLOCKS_URL', plugin_dir_url(__FILE__));
     }

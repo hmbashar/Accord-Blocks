@@ -2,9 +2,9 @@
 Contributors: hmbashar
 Tags: accordion, faq, blocks, toggle, collapse
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1.3
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,10 +76,19 @@ Yes, the plugin implements proper schema markup for FAQs and follows SEO best pr
 
 == Changelog ==
 
+= 1.0.1 =
+* Removed hardcoded background color from FAQ Group block that was overriding theme styles.
+* Updated Author URI to personal website.
+* Updated tested-up-to version to WordPress 7.1.3.
+* Improved GitHub Actions deploy workflow.
+
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Fixes a visual bug where the FAQ Group block forced a light-blue background regardless of theme styles. Update recommended for all users.
 
 = 1.0.0 =
 First public release of Accord Blocks.

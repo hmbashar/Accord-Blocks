@@ -1,8 +1,8 @@
 {
-	"name": "blocks",
-	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"name": "accord-blocks",
+	"version": "1.0.1",
+	"description": "Gutenberg blocks for creating beautiful accordions and FAQs.",
+	"author": "Md Abul Bashar",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {

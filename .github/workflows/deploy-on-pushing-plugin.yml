@@ -4,14 +4,24 @@ on:
   release:
     types:
       - published
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag to deploy (e.g. 1.0.1)
+        required: true
+        type: string
 
 jobs:
   deploy:
     name: Deploy to WordPress.org
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -20,8 +30,9 @@ jobs:
 
       - name: Install dependencies and build
         run: |
+          cd blocks
           npm ci
-          npm run build   
+          npm run build
 
       - name: WordPress Plugin Deploy
         id: deploy
@@ -32,13 +43,10 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: accord-blocks
+          VERSION: ${{ inputs.tag }}
 
       - name: Upload release asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ steps.deploy.outputs.zip-path }}
-          asset_name: ${{ github.event.repository.name }}.zip
-          asset_content_type: application/zip
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          files: ${{ steps.deploy.outputs.zip-path }}
